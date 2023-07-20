@@ -1,0 +1,65 @@
+# 서버 설정
+server:
+  port: 8000
+
+
+# DB 설정
+spring:
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mysql://${MY_SQL_LOCAL_URL}/${MY_SQL_DEV_SCHEMA}?useSSL=false
+    username: ${MY_SQL_LOCAL_USERNAME}
+    password: ${MY_SQL_LOCAL_PASSWORD}
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      auto-commit: true
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      minimum-idle: 30
+      idle-timeout: 60000
+  devtools:
+    livereload:
+      enabled: true
+    add-properties: true
+  # Redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+# MyBatis Configuration
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  type-aliases-package: com.eroulri.api.model
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-handlers-package: com.eroulri.api.common.handler.type
+
+# logging
+logging:
+  level:
+    #    com.zaxxer.hikari.pool.HikariPool: debug
+    jdbc:
+      sqlonly: off
+      sqltiming: debug
+      resultsettable: info
+      audit: off
+      resultset: off
+      connection: off
+
+
+springdoc:
+  api-docs:
+    enabled: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+
+api:
+  jwt:
+    secret: bb8eb39ba7698ef962786fa23bc9f17f9b532403bcc7efe00576656bcdfeeb73
+    expired-in: 1800000 # 30분
+    claims-key: auth
+    refresh-expired-in: 604800000
+

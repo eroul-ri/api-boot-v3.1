@@ -1,5 +1,3 @@
-# API-BOOT-3.1
-
 ### 프로젝트 공통 환경
 
 - SpringBoot 3.1.1

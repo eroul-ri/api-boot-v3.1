@@ -1,0 +1,9 @@
+### locale test en-US
+GET http://localhost:8000/sample
+Accept: application/json
+Accept-Language: en-US
+
+### locale test ko-KR
+GET http://localhost:8000/sample
+Accept: application/json
+Accept-Language: ko-KR

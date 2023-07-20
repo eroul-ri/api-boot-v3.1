@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eroulri.api.repository.MemberDetailsMapper">
+
+    <select id="findMember" parameterType="string" resultType="Member">
+        SELECT /* MemberDetailsMapper.findMember */
+            MEMBER_ID
+             , EMAIL
+             , LOGIN_ID
+             , MEMBER_NM
+             , PWD
+             , MEMBER_TYPE
+             , DESCRIPTION
+             , BLOCK_AT
+             , BLOCK_BY
+             , ACTIVATED
+             , DELETED
+        FROM MEMBER
+        WHERE 1 = 1
+          AND DELETED IS FALSE
+          AND LOGIN_ID = #{username}
+    </select>
+</mapper>

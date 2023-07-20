@@ -1,0 +1,4 @@
+GET http://localhost:8000/v1/authentication
+Accept: application/json
+Authorization: Basic YWRtaW46MTIzNDU2Nzgh
+
